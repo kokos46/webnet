@@ -13,5 +13,6 @@
     <h1>{{Auth::user()->name}}</h1>
 @endauth
 <a href="{{route('login')}}">Sign in</a>
+<a href="{{route('register')}}">Register</a>
 </body>
 </html>
