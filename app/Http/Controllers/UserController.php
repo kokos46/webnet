@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -38,6 +39,13 @@ class UserController extends Controller
 
         $user = User::create(['name' => $login, 'email' => $email, 'password' => Hash::make($password)]);
         Auth::login($user);
+        return redirect('/');
+    }
+
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
         return redirect('/');
     }
 

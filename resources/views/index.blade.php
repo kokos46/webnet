@@ -14,5 +14,6 @@
 @endauth
 <a href="{{route('login')}}">Sign in</a>
 <a href="{{route('register')}}">Register</a>
+<a href="{{route('logout')}}">Log out</a>
 </body>
 </html>
