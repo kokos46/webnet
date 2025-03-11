@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\AuthMiddleware;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return view('index');
@@ -11,3 +13,7 @@ Route::post('/login', [UserController::class, 'authenticate']);
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/register', [UserController::class, 'store'])->name('registerNewUser');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::middleware(AuthMiddleware::class)->group(function () {
+    Route::get('/dashboard', [PostController::class, 'dashboard'])->name('dashboard');
+});
