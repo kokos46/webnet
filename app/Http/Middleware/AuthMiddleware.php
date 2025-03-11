@@ -18,7 +18,7 @@ class AuthMiddleware
     {
 
         if(!Auth::check()){
-            redirect()->route('login');
+            return redirect('/');
         }
 
         return $next($request);

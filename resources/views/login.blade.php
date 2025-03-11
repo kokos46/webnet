@@ -8,9 +8,11 @@
 <body>
 <form action="/login" method="post">
     @csrf
-    <input type="text" name="name">
-    <input type="password" name="password">
+    <input type="text" name="name" placeholder="Username">
+    <input type="password" name="password" placeholder="Password">
     <input type="submit" value="Sign in">
 </form>
+<a href="{{ route('register') }}">Create account</a>
+<a href="{{ route('logout') }}">Log out</a>
 </body>
 </html>
