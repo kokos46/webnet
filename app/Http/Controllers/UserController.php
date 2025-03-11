@@ -39,7 +39,7 @@ class UserController extends Controller
 
         $user = User::create(['name' => $login, 'email' => $email, 'password' => Hash::make($password)]);
         Auth::login($user);
-        return redirect('/');
+        return redirect('/dashboard');
     }
 
     public function logout()
@@ -58,7 +58,7 @@ class UserController extends Controller
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
 
-            return redirect('/');
+            return redirect('/dashboard');
         }
         return back()->withErrors([
             'name' => 'The provided credentials do not match our records.',

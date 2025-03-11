@@ -6,14 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-@guest
-    Not logged in
-@endguest
-@auth
-    <h1>{{Auth::user()->name}}</h1>
-@endauth
-<a href="{{route('login')}}">Sign in</a>
-<a href="{{route('register')}}">Register</a>
-<a href="{{route('logout')}}">Log out</a>
+<a href="{{route('login')}}">log in</a>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolor dolorem dolores esse et ex fuga maiores modi molestias, numquam obcaecati officia quae quia reiciendis rerum tenetur ullam voluptate voluptates.
+</p>
 </body>
 </html>
