@@ -16,3 +16,5 @@ Route::post('/register', [UserController::class, 'store'])->name('registerNewUse
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [PostController::class, 'dashboard'])->name('dashboard')->middleware(AuthMiddleware::class);
+Route::get('/user/{id}', [UserController::class, 'userPage'])->name('user')/*->middleware(AuthMiddleware::class)*/;
+Route::post('/user/{id}/update', [UserController::class, 'updatePage'])->name('updatePage');

@@ -64,4 +64,27 @@ class UserController extends Controller
             'name' => 'The provided credentials do not match our records.',
         ]);
     }
+
+    public function userPage(int $id){
+        $user = User::where('id', $id)->first();
+        if($user->html_url == null){
+            return view('defaultuserpage', ['user' => $user]);
+        }
+        return view('users.id_'.$id);
+    }
+
+    public function updatePage(int $id, Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $request->validate([
+                'htmlpage'=>'required'
+            ]);
+            if ($request->hasFile('htmlpage')) {
+                $file = $request->file('htmlpage');
+                $file->move(resource_path('views/users'), 'id_'.$id.'.blade.php');
+            }
+            User::where('id', $id)->update(['html_url' => $file->path()]);
+        }
+        return redirect('/user/'.$id);
+    }
 }
